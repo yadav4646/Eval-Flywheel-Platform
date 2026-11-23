@@ -1,0 +1,16 @@
+node_modules/
+.env
+db/*.sqlite
+db/*.sqlite-*
+results/
+traces/
+labels/render/
+evals/datasets/.embeddings.json
+flywheel/state/*.json
+!flywheel/state/.gitkeep
+coverage/
+.DS_Store
+reports/latest.md
+/gate*.md
+/attribution*.md
+/curation.md
