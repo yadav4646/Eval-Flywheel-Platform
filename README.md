@@ -12,8 +12,8 @@ This repo is built in 10 phases, one commit each:
 
 | Phase | What it adds |
 |---|---|
-| 1 | Project scaffold + deterministic shop database |
-| 2 | The text-to-SQL analyst agent (read-only SQL tools + agent loop) |
+| ✅ 1 | Project scaffold + deterministic shop database |
+| ✅ 2 | The text-to-SQL analyst agent (read-only SQL tools + agent loop) |
 | 3 | Golden dataset + code scorers + LLM judge |
 | 4 | Config + deterministic mock models (keyless mode) |
 | 5 | k-trial eval runner: pass@k, pass^k, flaky cases, run fingerprints |
@@ -33,4 +33,8 @@ npm install
 
 ```bash
 npm run db:seed
+```
+
+```bash
+npm test
 ```

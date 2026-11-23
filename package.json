@@ -9,7 +9,8 @@
   },
   "scripts": {
     "db:seed": "tsx --disable-warning=ExperimentalWarning db/seed.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "NODE_OPTIONS=--disable-warning=ExperimentalWarning vitest run"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.122",
