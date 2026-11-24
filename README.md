@@ -14,7 +14,7 @@ This repo is built in 10 phases, one commit each:
 |---|---|
 | ✅ 1 | Project scaffold + deterministic shop database |
 | ✅ 2 | The text-to-SQL analyst agent (read-only SQL tools + agent loop) |
-| 3 | Golden dataset + code scorers + LLM judge |
+| ✅ 3 | Golden dataset + code scorers + LLM judge |
 | 4 | Config + deterministic mock models (keyless mode) |
 | 5 | k-trial eval runner: pass@k, pass^k, flaky cases, run fingerprints |
 | 6 | Human labeling + LLM judge calibration (weighted Cohen's κ) |
