@@ -15,7 +15,7 @@ This repo is built in 10 phases, one commit each:
 | ✅ 1 | Project scaffold + deterministic shop database |
 | ✅ 2 | The text-to-SQL analyst agent (read-only SQL tools + agent loop) |
 | ✅ 3 | Golden dataset + code scorers + LLM judge |
-| 4 | Config + deterministic mock models (keyless mode) |
+| ✅ 4 | Config + deterministic mock models (keyless mode) |
 | 5 | k-trial eval runner: pass@k, pass^k, flaky cases, run fingerprints |
 | 6 | Human labeling + LLM judge calibration (weighted Cohen's κ) |
 | 7 | Production tracing (Braintrust), feedback API, web UI, traffic simulator |
@@ -26,6 +26,8 @@ This repo is built in 10 phases, one commit each:
 ## Quick start (so far)
 
 Requires Node ≥ 22.13 (uses built-in `node:sqlite`); `nvm use` picks it up from `.nvmrc`.
+
+**Keyless mode:** without `OPENAI_API_KEY` (or with `MOCK=1`), deterministic mock models stand in for OpenAI, so everything runs offline and reproducibly. The mocks are a test double, not a benchmark of real model quality.
 
 ```bash
 npm install
