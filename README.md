@@ -16,7 +16,7 @@ This repo is built in 10 phases, one commit each:
 | ✅ 2 | The text-to-SQL analyst agent (read-only SQL tools + agent loop) |
 | ✅ 3 | Golden dataset + code scorers + LLM judge |
 | ✅ 4 | Config + deterministic mock models (keyless mode) |
-| 5 | k-trial eval runner: pass@k, pass^k, flaky cases, run fingerprints |
+| ✅ 5 | k-trial eval runner: pass@k, pass^k, flaky cases, run fingerprints |
 | 6 | Human labeling + LLM judge calibration (weighted Cohen's κ) |
 | 7 | Production tracing (Braintrust), feedback API, web UI, traffic simulator |
 | 8 | Auto-curation: production traces → golden dataset |
@@ -39,4 +39,10 @@ npm run db:seed
 
 ```bash
 npm test
+```
+
+Run the eval (every case 5 times, keyless):
+
+```bash
+npm run eval -- --mock --k 5
 ```

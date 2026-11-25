@@ -9,6 +9,8 @@
   },
   "scripts": {
     "db:seed": "tsx --disable-warning=ExperimentalWarning db/seed.ts",
+    "eval": "tsx --disable-warning=ExperimentalWarning flywheel/cli.ts eval",
+    "flywheel": "tsx --disable-warning=ExperimentalWarning flywheel/cli.ts",
     "typecheck": "tsc --noEmit",
     "test": "NODE_OPTIONS=--disable-warning=ExperimentalWarning vitest run"
   },
