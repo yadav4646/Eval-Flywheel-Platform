@@ -2,6 +2,8 @@
 // One entry point for the whole flywheel:
 //
 //   eval       run k trials per case, write results/<runId>.json + reports/latest.md
+//   label      hand-label answers for judge calibration
+//   calibrate  measure judge-vs-human agreement (kappa)
 
 import "dotenv/config";
 import { parseArgs } from "node:util";
@@ -11,7 +13,7 @@ import { config } from "./config";
 import { isMock } from "./models";
 import { REPORTS_DIR } from "./paths";
 import { renderRun } from "./report";
-import { saveRun } from "./results";
+import { latestRunPath, saveRun } from "./results";
 import type { Kind, Suite, Status } from "../evals/dataset";
 
 const { positionals, values } = parseArgs({
@@ -29,6 +31,9 @@ const { positionals, values } = parseArgs({
     "no-send": { type: "boolean" },
     label: { type: "string" },
     out: { type: "string" },
+    run: { type: "string" },
+    n: { type: "string" },
+    labeler: { type: "string" },
   },
 });
 
@@ -59,8 +64,21 @@ async function main() {
       console.log(`\nResults: ${path}`);
       break;
     }
+    case "label": {
+      const { labelCli } = await import("./label/cli");
+      await labelCli({ runPath: values.run ?? latestRunPath(), n: Number(values.n ?? 20), labeler: values.labeler });
+      break;
+    }
+    case "calibrate": {
+      const { calibrate, renderCalibration } = await import("./judge/calibrate");
+      const cal = await calibrate({ mock });
+      const md = renderCalibration(cal);
+      writeFileSync(join(REPORTS_DIR, "judge-calibration.md"), md + "\n");
+      console.log(md);
+      break;
+    }
     default:
-      console.log(`Usage: tsx flywheel/cli.ts <eval> [--mock] [--k N] ...
+      console.log(`Usage: tsx flywheel/cli.ts <eval|label|calibrate> [--mock] [--k N] ...
 See README.md for every flag.`);
       process.exit(cmd ? 1 : 0);
   }

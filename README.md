@@ -17,7 +17,7 @@ This repo is built in 10 phases, one commit each:
 | ✅ 3 | Golden dataset + code scorers + LLM judge |
 | ✅ 4 | Config + deterministic mock models (keyless mode) |
 | ✅ 5 | k-trial eval runner: pass@k, pass^k, flaky cases, run fingerprints |
-| 6 | Human labeling + LLM judge calibration (weighted Cohen's κ) |
+| ✅ 6 | Human labeling + LLM judge calibration (weighted Cohen's κ) |
 | 7 | Production tracing (Braintrust), feedback API, web UI, traffic simulator |
 | 8 | Auto-curation: production traces → golden dataset |
 | 9 | Regression attribution + CI gate logic |
@@ -45,4 +45,14 @@ Run the eval (every case 5 times, keyless):
 
 ```bash
 npm run eval -- --mock --k 5
+```
+
+Grade saved answers yourself (the judge's verdict is hidden), then measure how often the AI judge agrees with you:
+
+```bash
+npm run label
+```
+
+```bash
+npm run judge:calibrate
 ```
