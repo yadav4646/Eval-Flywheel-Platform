@@ -18,7 +18,7 @@ This repo is built in 10 phases, one commit each:
 | ✅ 4 | Config + deterministic mock models (keyless mode) |
 | ✅ 5 | k-trial eval runner: pass@k, pass^k, flaky cases, run fingerprints |
 | ✅ 6 | Human labeling + LLM judge calibration (weighted Cohen's κ) |
-| 7 | Production tracing (Braintrust), feedback API, web UI, traffic simulator |
+| ✅ 7 | Production tracing (Braintrust), feedback API, web UI, traffic simulator |
 | 8 | Auto-curation: production traces → golden dataset |
 | 9 | Regression attribution + CI gate logic |
 | 10 | GitHub Actions (CI gate + nightly curation), baseline, full docs |
@@ -55,4 +55,16 @@ npm run label
 
 ```bash
 npm run judge:calibrate
+```
+
+Start the analyst web app, then open http://localhost:8787 to ask questions and give 👍/👎 or correct the SQL (every turn is traced; to Braintrust when `BRAINTRUST_API_KEY` is set, else to `traces/`):
+
+```bash
+npm run serve
+```
+
+Generate realistic traffic before real users exist:
+
+```bash
+npm run simulate -- --mock
 ```

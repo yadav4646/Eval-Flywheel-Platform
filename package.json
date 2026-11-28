@@ -9,6 +9,8 @@
   },
   "scripts": {
     "db:seed": "tsx --disable-warning=ExperimentalWarning db/seed.ts",
+    "serve": "tsx --disable-warning=ExperimentalWarning server/index.ts",
+    "simulate": "tsx --disable-warning=ExperimentalWarning scripts/simulate-traffic.ts",
     "eval": "tsx --disable-warning=ExperimentalWarning flywheel/cli.ts eval",
     "label": "tsx --disable-warning=ExperimentalWarning flywheel/cli.ts label",
     "judge:calibrate": "tsx --disable-warning=ExperimentalWarning flywheel/cli.ts calibrate",
